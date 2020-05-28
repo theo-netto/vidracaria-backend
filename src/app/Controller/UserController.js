@@ -20,13 +20,12 @@ class UserController {
       return res.status(400).json({ error: 'User alredy exists' });
     }
 
-    const { id, name, email, provider } = await User.create(req.body);
+    const { id, name, email } = await User.create(req.body);
 
     return res.json({
       id,
       name,
       email,
-      provider,
     });
   }
   async update(req, res) {
@@ -39,8 +38,7 @@ class UserController {
         .when('oldPassword', (oldPassword, field) =>
           oldPassword ? field.required() : field
         ),
-      passwordConfirm: Yup.string()
-      .when('password', (password, field) =>
+      passwordConfirm: Yup.string().when('password', (password, field) =>
         password ? field.required().oneOf([Yup.ref('password')]) : field
       ),
     });
@@ -65,13 +63,12 @@ class UserController {
       return res.status(401).json({ error: 'Password does not match.' });
     }
 
-    const { id, name, provider } = await user.update(req.body);
+    const { id, name } = await user.update(req.body);
 
     return res.json({
       id,
       name,
       email,
-      provider,
     });
   }
 }
