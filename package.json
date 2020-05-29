@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "sucrase-node src/server.js",
+    "start": "sucrase ./src -d ./dist --transforms imports",
     "queue": "nodemon src/queue.js"
   },
   "dependencies": {
