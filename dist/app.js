@@ -1,18 +1,49 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }require('dotenv/config');
-var _express = require('express'); var _express2 = _interopRequireDefault(_express);
-var _node = require('@sentry/node'); var Sentry = _interopRequireWildcard(_node);
+Object.defineProperty(exports, '__esModule', { value: true });
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  }
+  const newObj = {};
+  if (obj != null) {
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  return newObj;
+}
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+require('dotenv/config');
+const _express = require('express');
+
+const _express2 = _interopRequireDefault(_express);
+const _node = require('@sentry/node');
+
+const Sentry = _interopRequireWildcard(_node);
 // import Youch from 'youch';
 require('express-async-errors');
-var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
-var _sentry = require('./config/sentry'); var _sentry2 = _interopRequireDefault(_sentry);
-var _routes = require('./routes'); var _routes2 = _interopRequireDefault(_routes);
+const _path = require('path');
+
+const _path2 = _interopRequireDefault(_path);
+const _cors = require('cors');
+
+const _cors2 = _interopRequireDefault(_cors);
+const _sentry = require('./config/sentry');
+
+const _sentry2 = _interopRequireDefault(_sentry);
+const _routes = require('./routes');
+
+const _routes2 = _interopRequireDefault(_routes);
 
 require('./database');
 
 class App {
   constructor() {
-    this.server = _express2.default.call(void 0, );
+    this.server = _express2.default.call(void 0);
 
     Sentry.init(_sentry2.default);
 
@@ -27,7 +58,9 @@ class App {
     this.server.use(_cors2.default.call(void 0, ''));
     this.server.use(
       '/files',
-      _express2.default.static(_path2.default.resolve(__dirname, '..', 'temp', 'uploads'))
+      _express2.default.static(
+        _path2.default.resolve(__dirname, '..', 'temp', 'uploads')
+      )
     );
   }
 
@@ -46,4 +79,4 @@ class App {
   }
 }
 
-exports. default = new App().server;
+exports.default = new App().server;
