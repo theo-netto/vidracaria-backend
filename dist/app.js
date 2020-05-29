@@ -17,7 +17,7 @@ function _interopRequireWildcard(obj) {
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
-require('dotenv/config');
+// require('dotenv/config');
 const _express = require('express');
 
 const _express2 = _interopRequireDefault(_express);
