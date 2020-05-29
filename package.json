@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "bin": {
+    "sucrase": "./bin/sucrase",
+    "sucrase-node": "./bin/sucrase-node"
+  },
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node sucrase src/server.js",
+    "start": "sucrase-node src/server.js",
     "queue": "nodemon src/queue.js"
   },
   "dependencies": {
