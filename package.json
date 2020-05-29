@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "bin": {
-    "sucrase": "./bin/sucrase",
-    "sucrase-node": "./bin/sucrase-node"
-  },
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "sucrase ./src -d ./dist --transforms imports",
